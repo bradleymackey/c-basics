@@ -5,17 +5,14 @@
 #define FALSE 0
 
 
-
 // in the header...
 extern int usemeeverywhere;
 // in the implementation...
 int usemeeverywhere;
-
-// allows us to use it anywhere we import this file.
-
+// * this allows us to use it anywhere we import this file.
 
 
-// this variable is about to be used a lot, we reccomend you keep this in a CPU register.
+// "this variable is about to be used a lot, we reccomend you keep this in a CPU register."
 // only a suggestion though, the program may not do so at runtime.
 register int a = 9;
 
@@ -24,85 +21,105 @@ register int a = 9;
 int foo(int bar);
 
 int main() {
-    int a = 3;
-    long int j = 2342342342;
-    float b = 4.5;
-    double c = 4.25;
-
-    // STATIC VARIABLE, will maintain its value if this function gets called more than once.
-    // everytime we call this function it's value will get 1 bigger, i.e. 23,24,25,26...
-    static int pooper = 23; 
-    pooper++;
-    // SEE BELOW FOR A STATIC FUNCTION...
-
-    int a = 1, b = 2, c = 3;
-    a = b - 2 * 3;
-    printf("%d",a);
-
-    int numbers[10]; // an array of 10 integers
-
-    int marks[10];
-    char vowels[] = {'A','E','I','O','U'}; // compiler knows how many elements, we don't need to specify.
-    char vowels[][5] = {
-        {'A','E','I','O','U'},
-        {'a','e','i','o','u'}
-    };
-
-    for(int i = 0; i < 2; i++) {
-        for(int j = 0;j<5;j++) {
-
-        }
-    }
-
-    switch (a) {
-        case 4:
-            printf("it's 4\n");
-            break;
-        default:
-            printf("it's something else");
-            break;
-    }
-
-    #pragma mark Strings
-    // ******* STRINGS ********
-
-    char *name = "John Smith"; // pointer to a character array defines a simple string. READ ONLY
-
-    char name[] = "John Smith"; // character array. MUTABLE
-    char name[11] = "John Smith"; // SAME AS ABOVE (complier can interpret the size though)
-
-    char *name = "John Smith";
-    int age = 27;
-    printf("%s is %d years old.\n", name, age); // "John Smith is 27 years old."
-
-    strlen(name); // length of a string
-
-    if (strncmp(name, "John Smith",11) == 0) { // strncmp compares 2 strings up to some max comparison length, returns 0 if they are equal, another number otherwise. (UNSAFE VERSION CALLED strcmp).
-        // is john smith
-    } else {
-        // is not
-    }
-
-    char dest[20] = "Hello"; // make array bigger than we need to because we are about to concat
-    char scr[20] = "World";
-
-    strncat(dest,scr,3); // append 3 characters of scr to dest -> "HelloWor"
-    strncat(dest,scr,20); // -> "HelloWorWorld"
-
-    /// ******* FOR/WHILE LOOPS *******
-
-    int numberArray[] = {1,2,3,4,5,6,7,8,9,10}; // compiler can interpret size
-    int factorial = 1;
-    for (int i = 0; i < 10; i++) {
-        factorial *= numberArray[i];
-    }
-
-    while (x < 10) {
-        x++;
-        continue;
-        break;
-    }
+	return 0; // function exited normally.
 }
+
+// ****** SIMPLE DATA TYPES *******
+
+int a = 3;
+long i = 3243; // same as "long int"
+long int j = 2342342342; // same as "long"
+long long y = 437458375345345; // same as "long long int"
+long long int r = 743845683457634; // same as "long long"
+short someShort = 65535; // same as "short int"
+short int someOtherShort = 65535; // same as "short"
+float b = 4.5;
+double c = 4.25;
+long double lDouble = 3.324234342; // more precision still.
+
+// ints, or long, or long long, or short can be signed or unsigned.
+signed int sint = -342;
+unsigned int usint = 3466;
+signed short int minusThree = -3;
+unsigned long long int bigNub = 485648723468;
+
+
+void someFunction() {
+	// STATIC VARIABLE, will maintain its value if this function gets called more than once.
+	// everytime we call this function it's value will get 1 bigger, i.e. 23,24,25,26...
+	static int pooper = 23;
+	pooper++;
+	// SEE BELOW FOR A STATIC FUNCTION...
+}
+
+int a = 1, b = 2, c = 3;
+a = b - 2 * 3;
+printf("%d",a);
+
+int numbers[10]; // an array of 10 integers
+
+int marks[10];
+char vowels[] = {'A','E','I','O','U'}; // compiler knows how many elements, we don't need to specify.
+char vowels[][5] = {
+	{'A','E','I','O','U'},
+	{'a','e','i','o','u'}
+};
+
+for(int i = 0; i < 2; i++) {
+	for(int j = 0;j<5;j++) {
+
+	}
+}
+
+switch (a) {
+	case 4:
+		printf("it's 4\n");
+		break;
+	default:
+		printf("it's something else");
+		break;
+}
+
+#pragma mark Strings
+// ******* STRINGS ********
+
+char *name = "John Smith"; // pointer to a character array defines a simple string. READ ONLY
+
+char name[] = "John Smith"; // character array. MUTABLE
+char name[11] = "John Smith"; // SAME AS ABOVE (complier can interpret the size though)
+
+char *name = "John Smith";
+int age = 27;
+printf("%s is %d years old.\n", name, age); // "John Smith is 27 years old."
+
+strlen(name); // length of a string
+
+if (strncmp(name, "John Smith",11) == 0) { // strncmp compares 2 strings up to some max comparison length, returns 0 if they are equal, another number otherwise. (UNSAFE VERSION CALLED strcmp).
+	// is john smith
+} else {
+	// is not
+}
+
+char dest[20] = "Hello"; // make array bigger than we need to because we are about to concat
+char scr[20] = "World";
+
+strncat(dest,scr,3); // append 3 characters of scr to dest -> "HelloWor"
+strncat(dest,scr,20); // -> "HelloWorWorld"
+
+/// ******* FOR/WHILE LOOPS *******
+
+int numberArray[] = {1,2,3,4,5,6,7,8,9,10}; // compiler can interpret size
+int factorial = 1;
+for (int i = 0; i < 10; i++) {
+	factorial *= numberArray[i];
+}
+
+while (x < 10) {
+	x++;
+	continue;
+	break;
+}
+
 
 // *********** FUNCTIONS - (very simple in C) ************
 // MUST BE DECLARED BEFORE THEY CAN BE USED (in header file or at top of doucment.)
